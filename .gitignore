@@ -9,6 +9,8 @@ target/
 *.iml
 *.ipr
 
+*.lck
+
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -33,3 +35,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/Common/dependency-reduced-pom.xml
