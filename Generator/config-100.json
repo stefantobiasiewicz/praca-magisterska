@@ -1,0 +1,510 @@
+{
+  "experiment-time" : 2000,
+  "mqtt" : {
+    "broker" : "192.168.31.112",
+    "port" : 1883,
+    "username" : "service",
+    "password" : "master"
+  },
+  "sensors" : [ {
+    "sector" : "d349dadc-704c-4f11-885b-61544b525959",
+    "temperature-interval" : 6.877400386106306,
+    "light-interval" : 5.802183602551555,
+    "humidity-interval" : 5.787259268781007
+  }, {
+    "sector" : "50401344-ccf8-4a1e-a33e-ecd363254be8",
+    "temperature-interval" : 9.010859506269483,
+    "light-interval" : 1.6062593669998793,
+    "humidity-interval" : 8.669041980290396
+  }, {
+    "sector" : "7834eccf-fdfc-43c8-9fd0-ab2bbdce555f",
+    "temperature-interval" : 2.139878870102824,
+    "light-interval" : 8.743558281536663,
+    "humidity-interval" : 2.3394520893624495
+  }, {
+    "sector" : "b5c30de1-d42c-4cad-908b-d591929b86f9",
+    "temperature-interval" : 4.812146029917942,
+    "light-interval" : 2.8968241936245063,
+    "humidity-interval" : 7.4924165241263685
+  }, {
+    "sector" : "9ee1c720-3a25-4f6e-87ac-5a074abafa3c",
+    "temperature-interval" : 5.2667953617985095,
+    "light-interval" : 6.150131385778662,
+    "humidity-interval" : 9.994259417675957
+  }, {
+    "sector" : "ee396636-41a9-489e-999b-6bfbf540d760",
+    "temperature-interval" : 8.978389525607001,
+    "light-interval" : 2.625475940854881,
+    "humidity-interval" : 8.646426238283578
+  }, {
+    "sector" : "bbef27e2-9a1e-4312-9497-bd8a6edf003c",
+    "temperature-interval" : 4.2058477883329335,
+    "light-interval" : 1.1436106374978694,
+    "humidity-interval" : 5.714830229946161
+  }, {
+    "sector" : "c97ff348-9e20-402b-a27b-99e6cdb8f799",
+    "temperature-interval" : 0.4294384174197463,
+    "light-interval" : 0.20745090708196412,
+    "humidity-interval" : 1.316631165783415
+  }, {
+    "sector" : "c7038b82-90bf-4873-a86d-7ca8912995f0",
+    "temperature-interval" : 9.368185843440619,
+    "light-interval" : 1.2449956060758804,
+    "humidity-interval" : 6.114399076769662
+  }, {
+    "sector" : "694adbda-be3f-4159-b54b-bd77b06aa3c0",
+    "temperature-interval" : 3.799482499451474,
+    "light-interval" : 1.338962288424379,
+    "humidity-interval" : 9.773864068843915
+  }, {
+    "sector" : "e0d6bbf6-ff50-4976-9021-b728cd030d85",
+    "temperature-interval" : 4.836487637380618,
+    "light-interval" : 2.2901643698914507,
+    "humidity-interval" : 2.9135759471215628
+  }, {
+    "sector" : "b57f4fb5-37f7-4fb7-9b59-71e948806b44",
+    "temperature-interval" : 2.0850097087573305,
+    "light-interval" : 0.7439254378150006,
+    "humidity-interval" : 2.1360738362344933
+  }, {
+    "sector" : "d57189b3-1a58-41fe-97c2-bf3ac0563c3e",
+    "temperature-interval" : 0.17169671271449305,
+    "light-interval" : 7.723298395501868,
+    "humidity-interval" : 5.002617881760729
+  }, {
+    "sector" : "0605e34e-aea7-4f71-9168-b3e8541897b9",
+    "temperature-interval" : 0.03925363701273499,
+    "light-interval" : 1.764743210163613,
+    "humidity-interval" : 7.466064597625835
+  }, {
+    "sector" : "1eef057a-7e11-4655-8c2a-8e142055c469",
+    "temperature-interval" : 4.123312878498605,
+    "light-interval" : 0.185723739489857,
+    "humidity-interval" : 1.9326118680698778
+  }, {
+    "sector" : "9683225f-d64a-4d43-b0dc-422f60bb8305",
+    "temperature-interval" : 0.8142871196168,
+    "light-interval" : 7.131850140312044,
+    "humidity-interval" : 1.1456481006898867
+  }, {
+    "sector" : "e6ea7db6-ca15-41c3-92e3-5a774bade114",
+    "temperature-interval" : 2.2886640369566003,
+    "light-interval" : 4.5155997151443605,
+    "humidity-interval" : 5.5786928526357435
+  }, {
+    "sector" : "dad87cfa-f723-4bf5-a675-a8e27bd7211c",
+    "temperature-interval" : 5.4486015257151985,
+    "light-interval" : 3.244348378555607,
+    "humidity-interval" : 2.462885423593164
+  }, {
+    "sector" : "1661f1b8-5828-48c7-9594-4a29542ac88e",
+    "temperature-interval" : 9.374300416781914,
+    "light-interval" : 4.696528373357984,
+    "humidity-interval" : 4.585811626260977
+  }, {
+    "sector" : "8cd52f2e-93e4-4fed-8616-f7d64bafba71",
+    "temperature-interval" : 5.969295608539287,
+    "light-interval" : 9.490632672531605,
+    "humidity-interval" : 1.2781493383220155
+  }, {
+    "sector" : "c5c93c6b-8a2e-417e-ac2e-c53d3f47edf0",
+    "temperature-interval" : 7.177707134746754,
+    "light-interval" : 8.75571926418196,
+    "humidity-interval" : 6.672254210861521
+  }, {
+    "sector" : "24883c51-ef41-4ed4-aca8-46fea23e739b",
+    "temperature-interval" : 7.111489738657487,
+    "light-interval" : 9.388130167192676,
+    "humidity-interval" : 0.06087597878758677
+  }, {
+    "sector" : "346b8d75-0b80-492b-96d5-35942aa15f26",
+    "temperature-interval" : 0.6918720943460022,
+    "light-interval" : 2.542263235292499,
+    "humidity-interval" : 0.2395896450396917
+  }, {
+    "sector" : "4f00894d-ac4c-409e-a759-77886b61ed76",
+    "temperature-interval" : 6.935720022480702,
+    "light-interval" : 8.591422533587123,
+    "humidity-interval" : 6.202922143719571
+  }, {
+    "sector" : "e5a97332-350d-4091-9493-23753f2154ae",
+    "temperature-interval" : 4.399233481154433,
+    "light-interval" : 3.1935119724025505,
+    "humidity-interval" : 5.0109474272751156
+  }, {
+    "sector" : "e96938ab-2b65-44c0-8263-8def8be9a617",
+    "temperature-interval" : 8.54577078163201,
+    "light-interval" : 1.3018335305529982,
+    "humidity-interval" : 9.530156778896696
+  }, {
+    "sector" : "869a7666-d3c7-47c0-ae57-ccdf910d4ca0",
+    "temperature-interval" : 9.066722091191696,
+    "light-interval" : 5.849462977731794,
+    "humidity-interval" : 1.8576361231145488
+  }, {
+    "sector" : "f035854e-0c62-4f43-97c7-97a7cac6468d",
+    "temperature-interval" : 1.9680845234830924,
+    "light-interval" : 9.03077503038692,
+    "humidity-interval" : 9.240384802774038
+  }, {
+    "sector" : "d20f49ba-d7a9-49f8-a98e-8a4a9467fc15",
+    "temperature-interval" : 4.0894515352283225,
+    "light-interval" : 7.778522883087945,
+    "humidity-interval" : 9.317831841977991
+  }, {
+    "sector" : "f79fde02-0982-4a59-a870-152e258ba721",
+    "temperature-interval" : 9.900415202430818,
+    "light-interval" : 1.095826432806688,
+    "humidity-interval" : 4.928445645968652
+  }, {
+    "sector" : "ca67715e-b781-496f-abd1-fc7664897e5e",
+    "temperature-interval" : 5.861937431388976,
+    "light-interval" : 0.18612530306515773,
+    "humidity-interval" : 4.746982985858169
+  }, {
+    "sector" : "d904f5e8-393c-45c4-8dc3-d7ff089d18db",
+    "temperature-interval" : 9.838327886122729,
+    "light-interval" : 6.152305695437114,
+    "humidity-interval" : 5.2311167005626285
+  }, {
+    "sector" : "cefd1645-99e1-408b-9c05-09c26fabe485",
+    "temperature-interval" : 7.112012269071065,
+    "light-interval" : 9.988749384689674,
+    "humidity-interval" : 1.1495146561844771
+  }, {
+    "sector" : "d1587779-32df-4398-b1f0-322662a537da",
+    "temperature-interval" : 3.9926998412672496,
+    "light-interval" : 8.525877700480962,
+    "humidity-interval" : 1.9769906970185847
+  }, {
+    "sector" : "1cefb952-b608-4db3-9318-e7aeaea90cb3",
+    "temperature-interval" : 4.936255038607054,
+    "light-interval" : 7.921028451066912,
+    "humidity-interval" : 0.6359323334056355
+  }, {
+    "sector" : "2c3d9698-811c-458e-96bd-5e99d5ff9e7b",
+    "temperature-interval" : 7.717569069212118,
+    "light-interval" : 0.8101731680791457,
+    "humidity-interval" : 6.722645111839287
+  }, {
+    "sector" : "7b5ccea7-c10b-4202-a7f0-f36970577e21",
+    "temperature-interval" : 6.705652924404091,
+    "light-interval" : 6.1684312734853535,
+    "humidity-interval" : 3.752941522182689
+  }, {
+    "sector" : "f5c80b8e-bf35-44b8-9340-d6d04482fbd0",
+    "temperature-interval" : 1.1321123485109996,
+    "light-interval" : 5.932924726678342,
+    "humidity-interval" : 1.9203049196566646
+  }, {
+    "sector" : "4e0a3d64-f09a-41ba-aadb-bf0031195986",
+    "temperature-interval" : 6.878915482072178,
+    "light-interval" : 1.4134654935984714,
+    "humidity-interval" : 2.586715282498291
+  }, {
+    "sector" : "d20fd7ca-ee8a-4338-b70a-c4abcc07523b",
+    "temperature-interval" : 5.642520855197951,
+    "light-interval" : 3.9594176450069627,
+    "humidity-interval" : 1.257426891670781
+  }, {
+    "sector" : "b81a809d-10ae-4391-8a9d-1381e0d123e7",
+    "temperature-interval" : 5.629161105967489,
+    "light-interval" : 4.2009900301290575,
+    "humidity-interval" : 6.4583069688230434
+  }, {
+    "sector" : "e6c2de20-4b55-473c-90e6-4bb063263ee7",
+    "temperature-interval" : 4.156163840418118,
+    "light-interval" : 8.195790374365066,
+    "humidity-interval" : 2.320424070846012
+  }, {
+    "sector" : "56323c23-4ee4-48c0-9630-cfb12c8e38e3",
+    "temperature-interval" : 7.050162052330862,
+    "light-interval" : 2.7169181972061662,
+    "humidity-interval" : 8.916813991864366
+  }, {
+    "sector" : "4de4cded-e5d9-4c1f-9fea-d818dc3d9399",
+    "temperature-interval" : 5.2090295030237534,
+    "light-interval" : 8.505055915554992,
+    "humidity-interval" : 2.3518277203948603
+  }, {
+    "sector" : "739980cd-3741-4264-9e0a-b7e301aaab70",
+    "temperature-interval" : 0.4707065174232494,
+    "light-interval" : 9.871695007991683,
+    "humidity-interval" : 8.216311069605277
+  }, {
+    "sector" : "144e1241-9e18-40c9-a677-7baac827eaa7",
+    "temperature-interval" : 0.47406030098944174,
+    "light-interval" : 9.424219932218428,
+    "humidity-interval" : 8.476750061048516
+  }, {
+    "sector" : "5dbe3efb-b49d-4b77-a070-fd3c68678062",
+    "temperature-interval" : 5.546791778008026,
+    "light-interval" : 6.561145298541804,
+    "humidity-interval" : 7.2194485120815
+  }, {
+    "sector" : "0e1e2618-40a9-4660-bf46-dfcee7846771",
+    "temperature-interval" : 9.228002579724462,
+    "light-interval" : 3.9757212158347475,
+    "humidity-interval" : 4.471188785218134
+  }, {
+    "sector" : "b1c2e210-1fc3-499d-a74d-03343e7d187c",
+    "temperature-interval" : 7.726099380778119,
+    "light-interval" : 7.379401996845444,
+    "humidity-interval" : 2.222407216637985
+  }, {
+    "sector" : "c28968a4-5de7-4111-9bde-bb8ea328a8c1",
+    "temperature-interval" : 6.9721943084944655,
+    "light-interval" : 1.3210123169811427,
+    "humidity-interval" : 8.249297694279358
+  }, {
+    "sector" : "70c76868-6287-417f-ae79-600a208afb2c",
+    "temperature-interval" : 0.9213490173124161,
+    "light-interval" : 2.057306003374583,
+    "humidity-interval" : 0.7380314366724405
+  }, {
+    "sector" : "93c055d0-e551-4061-9a2e-e75b41177169",
+    "temperature-interval" : 6.676152663048011,
+    "light-interval" : 5.280992874813943,
+    "humidity-interval" : 3.1477384982630774
+  }, {
+    "sector" : "6b99148e-e7e6-4ffd-bf50-ea9aa38ed8a1",
+    "temperature-interval" : 1.3982204102114482,
+    "light-interval" : 8.958976041245306,
+    "humidity-interval" : 3.7051218661645144
+  }, {
+    "sector" : "487f0c82-3ba6-4f36-a612-42deccf84f19",
+    "temperature-interval" : 3.481666816216652,
+    "light-interval" : 6.360645516560497,
+    "humidity-interval" : 3.429913243195405
+  }, {
+    "sector" : "d4f29c61-3271-4e35-b96e-eadca40ecb72",
+    "temperature-interval" : 6.672753121972156,
+    "light-interval" : 4.82378453058984,
+    "humidity-interval" : 8.963172352113109
+  }, {
+    "sector" : "32e9540d-6fe9-42c2-a22e-9143b65458d7",
+    "temperature-interval" : 4.018437206492215,
+    "light-interval" : 2.232580915133399,
+    "humidity-interval" : 4.001741992003815
+  }, {
+    "sector" : "2fa8ff41-5b2c-4370-b155-602ff9c49a3a",
+    "temperature-interval" : 5.938077255270756,
+    "light-interval" : 0.005786244210082003,
+    "humidity-interval" : 7.411629830037239
+  }, {
+    "sector" : "dd29bea8-73a7-40d6-9e60-02ae2b3afe5d",
+    "temperature-interval" : 4.444240155832359,
+    "light-interval" : 0.6517444808350359,
+    "humidity-interval" : 8.407410283572244
+  }, {
+    "sector" : "095d1f47-7510-4792-a314-e7f7047be6c4",
+    "temperature-interval" : 0.003480052990302296,
+    "light-interval" : 0.6562986422293193,
+    "humidity-interval" : 8.302009541844544
+  }, {
+    "sector" : "312cfff8-aa21-4699-b8be-4b82d35576a8",
+    "temperature-interval" : 0.33294067646845504,
+    "light-interval" : 7.015266014972679,
+    "humidity-interval" : 2.827443848685638
+  }, {
+    "sector" : "fb9cff65-53ab-4797-8869-863e5fb0d724",
+    "temperature-interval" : 3.163341213120926,
+    "light-interval" : 2.3116460090337343,
+    "humidity-interval" : 4.079205816022407
+  }, {
+    "sector" : "686622d7-f46c-4362-ac0f-ef163c5995fe",
+    "temperature-interval" : 6.489972050721904,
+    "light-interval" : 1.9169815042180582,
+    "humidity-interval" : 3.9410429494737684
+  }, {
+    "sector" : "62919567-733a-4e21-b083-b163f3c6a5fa",
+    "temperature-interval" : 1.0913700433118068,
+    "light-interval" : 4.598300580278232,
+    "humidity-interval" : 3.310658302836087
+  }, {
+    "sector" : "b5ff6621-4b61-4e9a-b45f-a8d3cf093f37",
+    "temperature-interval" : 7.984985172682238,
+    "light-interval" : 5.017710002686316,
+    "humidity-interval" : 2.1547317290478354
+  }, {
+    "sector" : "2e5a1514-ae79-45d0-8e0e-28f8b9a81906",
+    "temperature-interval" : 2.0948655897007065,
+    "light-interval" : 3.2499127523813565,
+    "humidity-interval" : 9.889896979045336
+  }, {
+    "sector" : "4de4c722-675a-48d1-b89c-76fba164b9f0",
+    "temperature-interval" : 8.46726149473595,
+    "light-interval" : 4.4242929685160775,
+    "humidity-interval" : 2.296264498256374
+  }, {
+    "sector" : "cccac59b-fb54-42e8-827f-4d6d517d9560",
+    "temperature-interval" : 0.9062186393474825,
+    "light-interval" : 7.351724705424903,
+    "humidity-interval" : 5.581591373973403
+  }, {
+    "sector" : "a08ada5c-b232-4e06-95de-54b543c7c632",
+    "temperature-interval" : 8.831695118052014,
+    "light-interval" : 2.241377082196893,
+    "humidity-interval" : 1.934386556070462
+  }, {
+    "sector" : "425978c6-43f8-43a7-8932-1f9188accbae",
+    "temperature-interval" : 5.0522313789325715,
+    "light-interval" : 9.314885815549395,
+    "humidity-interval" : 5.3352129508036885
+  }, {
+    "sector" : "c9fd56ae-e229-4e9c-91a0-b241e07cc39d",
+    "temperature-interval" : 6.604732624049381,
+    "light-interval" : 1.5014180990154113,
+    "humidity-interval" : 6.130569738854011
+  }, {
+    "sector" : "3abb4d41-e532-438a-8fea-e65473863dd0",
+    "temperature-interval" : 8.116247893487543,
+    "light-interval" : 4.205795833191477,
+    "humidity-interval" : 7.733196066284923
+  }, {
+    "sector" : "e06edeb3-0601-4eb9-98f8-9bf921502f9b",
+    "temperature-interval" : 1.1602469531266502,
+    "light-interval" : 6.529318548806305,
+    "humidity-interval" : 5.809899091315591
+  }, {
+    "sector" : "a7806bd7-f45f-46c1-89d5-f54cbbbbd4c0",
+    "temperature-interval" : 0.9290309048613843,
+    "light-interval" : 0.25118986997371473,
+    "humidity-interval" : 7.3855268594561485
+  }, {
+    "sector" : "579868aa-617b-4335-bb94-dca6ead8d4c8",
+    "temperature-interval" : 0.7686993165091172,
+    "light-interval" : 1.0593758813095677,
+    "humidity-interval" : 4.963321651070575
+  }, {
+    "sector" : "a80b846d-8268-420b-82a4-5b66eb086d4d",
+    "temperature-interval" : 9.730211765250157,
+    "light-interval" : 6.551071575269999,
+    "humidity-interval" : 6.729653712511395
+  }, {
+    "sector" : "7746fcdc-eaf9-4cd7-ab76-1ff288756701",
+    "temperature-interval" : 9.610665620943573,
+    "light-interval" : 2.1964174410329553,
+    "humidity-interval" : 1.230486441303631
+  }, {
+    "sector" : "f915935b-74fe-497b-8f56-0fb89d7f4606",
+    "temperature-interval" : 9.67576233154025,
+    "light-interval" : 7.608852880433687,
+    "humidity-interval" : 2.9521660226353754
+  }, {
+    "sector" : "0ded577c-c2dd-4a30-967e-ec3a579a87e6",
+    "temperature-interval" : 9.667901695355098,
+    "light-interval" : 6.445669511382733,
+    "humidity-interval" : 3.3948351394152643
+  }, {
+    "sector" : "df50e8cc-d469-424c-8b1d-4257735e59bb",
+    "temperature-interval" : 6.431481798903299,
+    "light-interval" : 6.954324444524489,
+    "humidity-interval" : 1.4908693247490812
+  }, {
+    "sector" : "15b1fd83-fcab-4d12-83ba-2af8b32baf1a",
+    "temperature-interval" : 7.335200999829803,
+    "light-interval" : 5.793292114481689,
+    "humidity-interval" : 1.01205743928228
+  }, {
+    "sector" : "ffbdd178-2f36-4b0c-9838-6c2ce722d64f",
+    "temperature-interval" : 9.46653051666307,
+    "light-interval" : 0.25322852899882453,
+    "humidity-interval" : 2.088910953871217
+  }, {
+    "sector" : "312ef4eb-b0d6-4ba1-9595-d2c39c80ff96",
+    "temperature-interval" : 4.9271032589498756,
+    "light-interval" : 9.315025224848632,
+    "humidity-interval" : 2.624453711230905
+  }, {
+    "sector" : "8b2d0cd2-fc76-4e57-8b41-a827dd9d75f2",
+    "temperature-interval" : 0.9645621503906687,
+    "light-interval" : 3.603817548825956,
+    "humidity-interval" : 6.915416953444106
+  }, {
+    "sector" : "5870cbb2-bac1-4d0f-b5b7-42a22fc7f912",
+    "temperature-interval" : 7.795944014342739,
+    "light-interval" : 4.999820673470085,
+    "humidity-interval" : 3.9584794182888707
+  }, {
+    "sector" : "19a8c137-cdab-4bb5-ac7b-6253df92397e",
+    "temperature-interval" : 9.42144623632422,
+    "light-interval" : 8.379484636743452,
+    "humidity-interval" : 1.6601531036234574
+  }, {
+    "sector" : "41f5ccef-13e6-439b-8912-f6eec601084f",
+    "temperature-interval" : 7.797304323571364,
+    "light-interval" : 2.3209291015390763,
+    "humidity-interval" : 1.2246592334214434
+  }, {
+    "sector" : "00609706-a34d-42d0-b50b-8f66ac4190f1",
+    "temperature-interval" : 4.211144420914364,
+    "light-interval" : 7.857311786141141,
+    "humidity-interval" : 8.543617617506143
+  }, {
+    "sector" : "497aa7ed-8069-4aec-aa34-c8cf2a7346f0",
+    "temperature-interval" : 9.627757987462873,
+    "light-interval" : 4.2748834561499995,
+    "humidity-interval" : 0.8506616228519381
+  }, {
+    "sector" : "33072169-d4d4-45aa-8757-8203f7730168",
+    "temperature-interval" : 3.5393172315858132,
+    "light-interval" : 3.426941819893873,
+    "humidity-interval" : 3.687146602068064
+  }, {
+    "sector" : "bdfb4663-7922-40ce-ad68-ac5b55236735",
+    "temperature-interval" : 4.4212511891403,
+    "light-interval" : 3.2967038348318822,
+    "humidity-interval" : 3.926505977072956
+  }, {
+    "sector" : "5dd11be9-93a4-4914-9219-fb8ce75ecd45",
+    "temperature-interval" : 7.833459431261894,
+    "light-interval" : 5.268617930129137,
+    "humidity-interval" : 7.1065195672940815
+  }, {
+    "sector" : "c050aaf7-074e-410a-9705-76d06bc560a0",
+    "temperature-interval" : 9.266593299693346,
+    "light-interval" : 1.4841501396224266,
+    "humidity-interval" : 4.782320929711176
+  }, {
+    "sector" : "713d4ad5-e97c-4056-bcc7-a6a5416b6537",
+    "temperature-interval" : 8.110261807373035,
+    "light-interval" : 8.671980230962163,
+    "humidity-interval" : 1.5880272035315035
+  }, {
+    "sector" : "343a9a84-e447-4236-ac07-619d7f30a1a5",
+    "temperature-interval" : 1.777822425697847,
+    "light-interval" : 3.1612679190486315,
+    "humidity-interval" : 5.698607266472733
+  }, {
+    "sector" : "da73ca94-5d8b-42d0-9ce1-5a9657bb4e5a",
+    "temperature-interval" : 4.323467359993046,
+    "light-interval" : 0.5600623717350628,
+    "humidity-interval" : 1.9692598899050484
+  }, {
+    "sector" : "dde26b3b-36e6-4768-981d-be729fa99c2a",
+    "temperature-interval" : 4.3958543017812985,
+    "light-interval" : 6.479584081207582,
+    "humidity-interval" : 7.792910221649393
+  }, {
+    "sector" : "eee03e72-5ea2-4946-b7f2-be6016824bd1",
+    "temperature-interval" : 5.5682285580624225,
+    "light-interval" : 1.6648690562425517,
+    "humidity-interval" : 6.452136219628089
+  }, {
+    "sector" : "9038d53e-a660-4706-bc80-4c4dc801b79d",
+    "temperature-interval" : 1.321966549612984,
+    "light-interval" : 8.664171833207659,
+    "humidity-interval" : 2.4830663019447927
+  }, {
+    "sector" : "680cd939-6110-41d1-971d-957fdb291d20",
+    "temperature-interval" : 9.942531799864975,
+    "light-interval" : 6.203065691890892,
+    "humidity-interval" : 8.521870499629916
+  }, {
+    "sector" : "9f2bbe8b-a886-4c02-b9d6-62bc9f018c2d",
+    "temperature-interval" : 1.4182067738658177,
+    "light-interval" : 4.158608301348434,
+    "humidity-interval" : 4.6065014931992945
+  } ]
+}

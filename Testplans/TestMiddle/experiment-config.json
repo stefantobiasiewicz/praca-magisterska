@@ -1,0 +1,6 @@
+{
+  "window-size": 5,
+  "experiment-duration": 100,
+  "database-context": "test-middle",
+  "generator-config": "config-1000.json"
+}
