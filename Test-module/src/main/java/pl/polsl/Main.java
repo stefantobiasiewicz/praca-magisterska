@@ -20,7 +20,9 @@ import pl.polsl.comon.config.Experiment;
 import pl.polsl.comon.config.Sensor;
 import pl.polsl.comon.config.TestPlan;
 import pl.polsl.comon.entites.ReportEntity;
+import pl.polsl.comon.entites.WindowStatisticsEntity;
 import pl.polsl.comon.repositories.ReportRepository;
+import pl.polsl.comon.repositories.WindowStatisticsRepository;
 import pl.polsl.comon.utils.FileNames;
 import pl.polsl.comon.utils.JsonUtils;
 
@@ -34,6 +36,8 @@ import java.util.Map;
 @EntityScan(basePackages = {"pl.polsl.comon.entites"})
 public class Main implements CommandLineRunner {
 
+    @Autowired
+    WindowStatisticsRepository windowStatisticsRepository;
     @Autowired
     ReportRepository reportRepository;
 
@@ -68,6 +72,8 @@ public class Main implements CommandLineRunner {
 
         final int window = testPlan.getWindowSize();
         final int testTime = testPlan.getExperimentDuration();
+
+        //        ************************* QoD *************************
 
         double totalLightQoD = 0;
         double totalHumidityQoD = 0;
@@ -123,7 +129,6 @@ public class Main implements CommandLineRunner {
             totalHumidityQoD += humidityQoD;
             totalTemperatureQoD += temperatureQoD;
 
-
             currentSensor++;
             double progress = (double) currentSensor / totalSensors;
 
@@ -146,6 +151,29 @@ public class Main implements CommandLineRunner {
         final double averageHumidityQoD = totalHumidityQoD / configGenerator.getSensors().size();
         final double averageTemperatureQoD = totalTemperatureQoD / configGenerator.getSensors().size();
 
+
+        //        ************************* QoS *************************
+        double totalQoS = 0;
+        int qosSamples = 0;
+
+        for (final Sensor sensor : configGenerator.getSensors()) {
+            List<WindowStatisticsEntity> entities =
+                    windowStatisticsRepository.getAllByContext(testPlan.getDatabaseContext());
+
+            for (final WindowStatisticsEntity entity : entities) {
+                qosSamples++;
+                if (entity.getWindowProcessTime() > window ) {
+                    totalQoS += 0;
+                    continue;
+                }
+
+
+                totalQoS += ((double) -1 /window) * entity.getWindowProcessTime() + 1;
+            }
+        }
+        final double qos = totalQoS / qosSamples;
+
+
         System.out.println("");
         System.out.println("");
         System.out.println("Czas testu: " + testTime);
@@ -156,6 +184,7 @@ public class Main implements CommandLineRunner {
         System.out.println("Średnia LightQoD: " + averageLightQoD);
         System.out.println("Średnia HumidityQoD: " + averageHumidityQoD);
         System.out.println("Średnia TemperatureQoD: " + averageTemperatureQoD);
+        System.out.println("QoS: " + qos);
     }
 
     @NoArgsConstructor

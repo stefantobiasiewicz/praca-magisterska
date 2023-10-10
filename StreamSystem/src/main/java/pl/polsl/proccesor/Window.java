@@ -1,7 +1,6 @@
 package pl.polsl.proccesor;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.support.PeriodicTrigger;
@@ -14,6 +13,7 @@ import pl.polsl.comon.entites.WindowStatisticsEntity;
 import pl.polsl.comon.model.input.HumidityData;
 import pl.polsl.comon.model.input.LightData;
 import pl.polsl.comon.model.input.TempData;
+import pl.polsl.comon.repositories.WindowStatisticsRepository;
 import pl.polsl.comon.utils.FileNames;
 import pl.polsl.comon.utils.JsonUtils;
 import pl.polsl.model.DataProcess;
@@ -29,6 +29,9 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class Window {
+
+    private final WindowStatisticsRepository windowStatisticsRepository;
+
     private static final int BUFFER_SIZE = 10000;
     private final long windowSize;
     private final long experimentTime;
@@ -45,7 +48,8 @@ public class Window {
 
     private static long windowId = 0;
 
-    public Window(@Value("${testPlanDir}") final String testPlanDir, final TaskScheduler taskScheduler, final Processor processor) throws IOException {
+    public Window(@Value("${testPlanDir}") final String testPlanDir, final WindowStatisticsRepository windowStatisticsRepository, final TaskScheduler taskScheduler, final Processor processor) throws IOException {
+        this.windowStatisticsRepository = windowStatisticsRepository;
         final Experiment experiment = JsonUtils.MAPPER.readValue(new File(testPlanDir, FileNames.EXPERIMENT),
                 Experiment.class);
 
@@ -66,6 +70,8 @@ public class Window {
         this.dbContext = testPlan.getDatabaseContext();
         this.taskScheduler = taskScheduler;
         this.processor = processor;
+
+        windowStatisticsRepository.deleteAllByContext(this.dbContext);
     }
 
     @PostConstruct
@@ -156,6 +162,7 @@ public class Window {
 
         final WindowStatisticsEntity entity = new WindowStatisticsEntity();
 
+        entity.setId(windowId);
         entity.setContext(dbContext);
         entity.setCatchTime(LocalDateTime.now());
 
@@ -169,6 +176,8 @@ public class Window {
         entity.setTempBuffSize((long) tempData.size());
 
         entity.setWindowProcessTime(System.currentTimeMillis() - windowProcessStartTime);
+
+        windowStatisticsRepository.save(entity);
 
         windowId++;
         try {
