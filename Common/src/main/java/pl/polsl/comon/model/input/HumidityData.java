@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Data
 public class HumidityData {
-    @JsonProperty("address")
-    private String address;
+    @JsonProperty("sector")
+    private String sector;
     @JsonProperty("humidity")
     private Double humidity;
     @JsonProperty("battery")
-    private OffsetDateTime dateOfCreation;
+    private LocalDateTime dateOfCreation;
 }

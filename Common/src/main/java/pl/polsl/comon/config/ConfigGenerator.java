@@ -1,18 +1,17 @@
-package pl.polsl.config;
+package pl.polsl.comon.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import pl.polsl.comon.model.MessageType;
 
 import java.util.List;
 
 @Data
-public class GeneratorConfig {
-    @JsonProperty("type")
-    private GeneratorType type;
+public class ConfigGenerator {
     @JsonProperty("experiment-time")
     private Long experimentTime;
     @JsonProperty("mqtt")
     private MqttConnection mqtt;
-    @JsonProperty("sectors")
-    private List<Sector> sectors;
+    @JsonProperty("sensors")
+    private List<Sensor> sensors;
 }

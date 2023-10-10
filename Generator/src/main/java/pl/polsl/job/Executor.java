@@ -1,7 +1,8 @@
 package pl.polsl.job;
 
 import pl.polsl.Rng;
-import pl.polsl.config.Sector;
+import pl.polsl.comon.config.Sensor;
+import pl.polsl.comon.model.MessageType;
 
 import java.util.List;
 import java.util.function.Function;
@@ -9,22 +10,34 @@ import java.util.function.Function;
 public class Executor {
     private final TimeQueue queue = new TimeQueue();
     private final Function<Job, Job> task;
-    public Executor(List<Sector> sectors, Function<Job, Job> task) {
+
+    public Executor(final MessageType type, final List<Sensor> sensors, final Function<Job, Job> task) {
         this.task = task;
 
-        for (final Sector sector : sectors) {
-            for (final String address: sector.getAddresses()) {
-                final Job job = new Job();
+        for (final Sensor sensor : sensors) {
+            final Job job = new Job();
 
-                job.setName(String.format("%s-%s", sector.getName(), address));
-                job.setAddresses(address);
-                job.setInterval(sector.getInterval());
-                job.setNoise(sector.getNoise());
-                job.setValue(10.0);
-                job.setRng(Rng.nextDouble());
-                job.setNextCall((long) (System.currentTimeMillis() + (Rng.nextDouble() * job.getInterval() * 1000) + (Rng.nextDouble() * job.getNoise() * 1000)));
-                queue.add(job);
+            job.setType(type);
+            job.setSector(sensor.getSector());
+            switch (type) {
+                case TEMP:
+                    job.setInterval(sensor.getTemperatureInterval());
+                    break;
+                case LIGHT:
+                    job.setInterval(sensor.getLightInterval());
+                    break;
+                case HUMIDITY:
+                    job.setInterval(sensor.getHumidityInterval());
+                    break;
+                default:
+                    throw new RuntimeException("invalid sensor type");
             }
+
+            job.setValue(0.0);
+            job.setRng(Rng.nextDouble());
+
+            job.setNextCall((long) (System.currentTimeMillis() + (Rng.nextDouble() * job.getInterval() * 1000)));
+            queue.add(job);
         }
 
         queue.print();

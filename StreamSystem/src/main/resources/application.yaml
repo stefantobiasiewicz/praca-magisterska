@@ -1,0 +1,28 @@
+server:
+  port: 17000
+
+system:
+  windowSize: 5s
+  mqtt:
+    broker: "192.168.31.112"
+    port: 1883
+    username: "service"
+    password: "master"
+    clientId: "service-v1"
+
+testPlanDir: "/Users/stefantobiasiewicz/Documents/Programing/Java/magisterka/System/Testplans"
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://192.168.31.111:5432/iot_system
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      platform: postgres

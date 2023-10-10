@@ -2,14 +2,14 @@ package pl.polsl.comon.model.input;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Data
 public class LightData {
-    @JsonProperty("address")
-    private String address;
+    @JsonProperty("sector")
+    private String sector;
     @JsonProperty("lux")
     private Double lux;
     @JsonProperty("timestamp")
-    private OffsetDateTime dateOfCreation;
+    private LocalDateTime dateOfCreation;
 }

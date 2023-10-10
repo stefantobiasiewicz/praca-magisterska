@@ -1,6 +1,6 @@
 {
   "type" : "TEMP",
-  "experiment-time" : 10,
+  "experiment-time" : 200,
   "mqtt" : {
     "broker" : "192.168.31.112",
     "port" : 1883,

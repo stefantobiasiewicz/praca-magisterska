@@ -1,14 +1,14 @@
 package pl.polsl.job;
 
 import lombok.Data;
+import pl.polsl.comon.model.MessageType;
 
 @Data
 public class Job implements Comparable<Job> {
+    private MessageType type;
     private Double rng;
-    private String name;
-    private String addresses;
+    private String sector;
     private Double interval;
-    private Double noise;
     private Double value;
     private Long nextCall;
     @Override

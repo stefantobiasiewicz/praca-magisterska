@@ -1,14 +1,17 @@
-package pl.polsl.config;
+package pl.polsl.comon.model;
 
-public enum GeneratorType {
+import lombok.Getter;
+
+public enum MessageType {
     TEMP("TEMP"),
     HUMIDITY("HUMIDITY"),
     LIGHT("LIGHT")
     ;
 
+    @Getter
     private String name;
 
-    GeneratorType(String name) {
+    MessageType(String name) {
         this.name = name;
     }
 }

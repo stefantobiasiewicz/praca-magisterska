@@ -1,4 +1,4 @@
-package pl.polsl.config;
+package pl.polsl.comon.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -13,6 +13,4 @@ public class MqttConnection {
     private String username;
     @JsonProperty("password")
     private String password;
-    @JsonProperty("clientId")
-    private String clientId;
 }
