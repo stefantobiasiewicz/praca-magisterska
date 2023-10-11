@@ -30,14 +30,17 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class Window {
 
+    private static final int BUFFER_SIZE = 1;
+    private static long windowId = 0;
     private final WindowStatisticsRepository windowStatisticsRepository;
-
-    private static final int BUFFER_SIZE = 10000;
     private final long windowSize;
     private final long experimentTime;
-    private final List<DataProcess<HumidityData>> humidityData = new ArrayList<>();
-    private final List<DataProcess<LightData>> lightData = new ArrayList<>();
-    private final List<DataProcess<TempData>> tempData = new ArrayList<>();
+    //    private final List<DataProcess<HumidityData>> humidityData = new ArrayList<>();
+//    private final List<DataProcess<LightData>> lightData = new ArrayList<>();
+//    private final List<DataProcess<TempData>> tempData = new ArrayList<>();
+    private final Map<String, List<DataProcess<HumidityData>>> humidityData = new LinkedHashMap<>();
+    private final Map<String, List<DataProcess<LightData>>> lightData = new LinkedHashMap<>();
+    private final Map<String, List<DataProcess<TempData>>> tempData = new LinkedHashMap<>();
     private final Set<String> sectors = new HashSet<>();
     private final TaskScheduler taskScheduler;
     private final Processor processor;
@@ -45,8 +48,6 @@ public class Window {
     private long humidityDataLoss;
     private long lightDataLoss;
     private long tempDataLoss;
-
-    private static long windowId = 0;
 
     public Window(@Value("${testPlanDir}") final String testPlanDir, final WindowStatisticsRepository windowStatisticsRepository, final TaskScheduler taskScheduler, final Processor processor) throws IOException {
         this.windowStatisticsRepository = windowStatisticsRepository;
@@ -63,6 +64,10 @@ public class Window {
 
         for (final Sensor sensor : configGenerator.getSensors()) {
             sectors.add(sensor.getSector());
+
+            humidityData.put(sensor.getSector(), new ArrayList<>());
+            lightData.put(sensor.getSector(), new ArrayList<>());
+            tempData.put(sensor.getSector(), new ArrayList<>());
         }
 
         this.windowSize = testPlan.getWindowSize();
@@ -76,42 +81,63 @@ public class Window {
 
     @PostConstruct
     public void scheduleTasks() {
-        System.out.println(String.format("Start EXPERIMENT at: %s", LocalDateTime.now()));
+        System.out.printf("Start EXPERIMENT at: %s%n", LocalDateTime.now());
         taskScheduler.schedule(this::calculate, new PeriodicTrigger(windowSize, TimeUnit.SECONDS));
         taskScheduler.scheduleWithFixedDelay(this::end, Date.from(Instant.now().plusSeconds(experimentTime)), 1);
     }
 
     private void end() {
-        System.out.println(String.format("End EXPERIMENT at: %s", LocalDateTime.now()));
+        System.out.printf("End EXPERIMENT at: %s%n", LocalDateTime.now());
         System.out.println("End of experimetn!!!");
         System.exit(0);
     }
 
     public void handleHumidityData(final DataProcess<HumidityData> data) {
-        if (humidityData.size() > BUFFER_SIZE) {
+//        if (humidityData.size() > BUFFER_SIZE) {
+//            humidityDataLoss++;
+//            return;
+//        }
+
+//        humidityData.add(data);
+
+        final List<DataProcess<HumidityData>> list = humidityData.get(data.getData().getSector());
+        if (list.size() > BUFFER_SIZE) {
             humidityDataLoss++;
             return;
         }
-
-        humidityData.add(data);
+        list.add(data);
     }
 
     public void handleLightData(final DataProcess<LightData> data) {
-        if (lightData.size() > BUFFER_SIZE) {
+//        if (lightData.size() > BUFFER_SIZE) {
+//            lightDataLoss++;
+//            return;
+//        }
+
+//        lightData.add(data);
+
+        final List<DataProcess<LightData>> list = lightData.get(data.getData().getSector());
+        if (list.size() > BUFFER_SIZE) {
             lightDataLoss++;
             return;
         }
-
-        lightData.add(data);
+        list.add(data);
     }
 
     public void handleTempData(final DataProcess<TempData> data) {
-        if (tempData.size() > BUFFER_SIZE) {
+//        if (tempData.size() > BUFFER_SIZE) {
+//            tempDataLoss++;
+//            return;
+//        }
+
+//        tempData.add(data);
+
+        final List<DataProcess<TempData>> list = tempData.get(data.getData().getSector());
+        if (list.size() > BUFFER_SIZE) {
             tempDataLoss++;
             return;
         }
-
-        tempData.add(data);
+        list.add(data);
     }
 
     private void calculate() {
@@ -122,20 +148,20 @@ public class Window {
 
         final long windowProcessStartTime = System.currentTimeMillis();
 
-        final List<DataProcess<HumidityData>> humidityData = new ArrayList<>(this.humidityData);
+//        final List<DataProcess<HumidityData>> humidityData = new ArrayList<>(this.humidityData);
         final long humiditySessionDataLoss = humidityDataLoss;
-        final List<DataProcess<LightData>> lightData = new ArrayList<>(this.lightData);
+//        final List<DataProcess<LightData>> lightData = new ArrayList<>(this.lightData);
         final long lightSessionDataLoss = lightDataLoss;
-        final List<DataProcess<TempData>> tempData = new ArrayList<>(this.tempData);
+//        final List<DataProcess<TempData>> tempData = new ArrayList<>(this.tempData);
         final long tempSessionDataLoss = tempDataLoss;
 
         final List<String> sensors = this.sectors.stream().toList();
 
-        this.humidityData.clear();
+//        this.humidityData.clear();
         humidityDataLoss = 0;
-        this.lightData.clear();
+//        this.lightData.clear();
         lightDataLoss = 0;
-        this.tempData.clear();
+//        this.tempData.clear();
         tempDataLoss = 0;
 
         System.out.println("calculation START...");
@@ -143,18 +169,26 @@ public class Window {
         long sumOfMeanAgeOfInfo = 0;
 
         for (final String sector : sensors) {
-            final List<DataProcess<HumidityData>> sensorHumidityData = humidityData.stream()
-                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
-                    .toList();
-            final List<DataProcess<LightData>> sensorLightData = lightData.stream()
-                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
-                    .toList();
-            final List<DataProcess<TempData>> sensorTempData = tempData.stream()
-                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
-                    .toList();
+//            final List<DataProcess<HumidityData>> sensorHumidityData = humidityData.stream()
+//                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
+//                    .toList();
+//            final List<DataProcess<LightData>> sensorLightData = lightData.stream()
+//                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
+//                    .toList();
+//            final List<DataProcess<TempData>> sensorTempData = tempData.stream()
+//                    .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
+//                    .toList();
+
+            final List<DataProcess<HumidityData>> sensorHumidityData = this.humidityData.get(sector);
+            final List<DataProcess<LightData>> sensorLightData = this.lightData.get(sector);
+            final List<DataProcess<TempData>> sensorTempData = this.tempData.get(sector);
 
             final ProcessReport report = processor.calculate(windowId, sector, sensorHumidityData, sensorLightData,
                     sensorTempData);
+
+            sensorHumidityData.clear();
+            sensorLightData.clear();
+            sensorTempData.clear();
 
             sumOfMeanAgeOfInfo += report.getMeanAgeOfInformation();
         }
@@ -182,7 +216,7 @@ public class Window {
         windowId++;
         try {
             System.out.println(JsonUtils.MAPPER.writeValueAsString(entity));
-        } catch (JsonProcessingException e) {
+        } catch (final JsonProcessingException e) {
             throw new RuntimeException(e);
         }
         System.out.println("calculation DONE...");
