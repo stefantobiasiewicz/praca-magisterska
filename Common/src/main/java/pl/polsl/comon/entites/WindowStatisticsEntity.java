@@ -17,14 +17,11 @@ public class WindowStatisticsEntity {
     private LocalDateTime catchTime;
 
 //    data for QoS adn QoD
-    private Long meanAgeOfInfo;
     private Long humidityDataLost;
     private Long lightDataLost;
     private Long tempDataLost;
 
-    private Long humidityBuffSize;
-    private Long lightBuffSize;
-    private Long tempBuffSize;
+    private Long BufferSize;
 
 
     private Long windowProcessTime;

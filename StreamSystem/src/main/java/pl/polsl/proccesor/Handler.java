@@ -9,9 +9,9 @@ import pl.polsl.model.DataProcess;
 @Component
 public class Handler {
 
-    private final Window window;
+    private final WindowBase window;
 
-    public Handler(final Window window) {
+    public Handler(final WindowBase window) {
         this.window = window;
     }
 

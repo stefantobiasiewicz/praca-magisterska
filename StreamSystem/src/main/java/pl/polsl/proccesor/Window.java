@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-@Component
+@Deprecated
 public class Window {
 
     private static final int BUFFER_SIZE = 1;
@@ -88,7 +88,7 @@ public class Window {
 
     private void end() {
         System.out.printf("End EXPERIMENT at: %s%n", LocalDateTime.now());
-        System.out.println("End of experimetn!!!");
+        System.out.println("End of experiment!!!");
         System.exit(0);
     }
 
@@ -183,14 +183,14 @@ public class Window {
             final List<DataProcess<LightData>> sensorLightData = this.lightData.get(sector);
             final List<DataProcess<TempData>> sensorTempData = this.tempData.get(sector);
 
-            final ProcessReport report = processor.calculate(windowId, sector, sensorHumidityData, sensorLightData,
+             processor.calculate(windowId, sector, sensorHumidityData, sensorLightData,
                     sensorTempData);
 
             sensorHumidityData.clear();
             sensorLightData.clear();
             sensorTempData.clear();
 
-            sumOfMeanAgeOfInfo += report.getMeanAgeOfInformation();
+//            sumOfMeanAgeOfInfo += report.getMeanAgeOfInformation();
         }
 
 
@@ -200,14 +200,14 @@ public class Window {
         entity.setContext(dbContext);
         entity.setCatchTime(LocalDateTime.now());
 
-        entity.setMeanAgeOfInfo(sumOfMeanAgeOfInfo / sensors.size());
+//        entity.setMeanAgeOfInfo(sumOfMeanAgeOfInfo / sensors.size());
         entity.setHumidityDataLost(humiditySessionDataLoss);
         entity.setLightDataLost(lightSessionDataLoss);
         entity.setTempDataLost(tempSessionDataLoss);
 
-        entity.setHumidityBuffSize((long) humidityData.size());
-        entity.setLightBuffSize((long) lightData.size());
-        entity.setTempBuffSize((long) tempData.size());
+//        entity.setHumidityBuffSize((long) humidityData.size());
+//        entity.setLightBuffSize((long) lightData.size());
+//        entity.setTempBuffSize((long) tempData.size());
 
         entity.setWindowProcessTime(System.currentTimeMillis() - windowProcessStartTime);
 

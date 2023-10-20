@@ -1,0 +1,9 @@
+Czas testu: 300
+Nazwa: test-middle-2
+Liczba sektorów: 10000
+Długość okna: 45
+************ WYNIKI ************
+Średnia LightQoD: 0.8582714285715225
+Średnia HumidityQoD: 0.8581428571429507
+Średnia TemperatureQoD: 0.8584428571429505
+QoS: 2301.0

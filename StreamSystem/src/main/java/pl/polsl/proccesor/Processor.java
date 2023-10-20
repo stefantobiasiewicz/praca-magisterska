@@ -1,6 +1,7 @@
 package pl.polsl.proccesor;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pl.polsl.comon.config.ConfigGenerator;
@@ -19,6 +20,7 @@ import pl.polsl.model.DataTimestamps;
 import pl.polsl.model.PartialReport;
 import pl.polsl.model.ProcessReport;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -31,7 +33,7 @@ public class Processor {
 
 
     public Processor(@Value("${testPlanDir}") final String testPlanDir, final ReportRepository reportRepository) throws IOException {
-        this.reportRepository = reportRepository;
+//        this.reportRepository = reportRepository;
         final Experiment experiment = JsonUtils.MAPPER.readValue(new File(testPlanDir, FileNames.EXPERIMENT),
                 Experiment.class);
 
@@ -44,8 +46,14 @@ public class Processor {
 
         System.out.println(dbContext);
 
-        reportRepository.deleteAllByContext(this.dbContext);
+        this.reportRepository = reportRepository;
     }
+
+//    @PostConstruct
+//    @Transactional
+//    public void postConstruct() {
+//        reportRepository.deleteAllByContext(this.dbContext);
+//    }
 
     public static <T> long calculateAverageTimeInSystem(final List<DataProcess<T>> dataProcessList, final long currentTimeMillis) {
         if (dataProcessList == null || dataProcessList.isEmpty()) {
@@ -62,10 +70,15 @@ public class Processor {
         return totalTimeInSystem / dataProcessList.size();
     }
 
-    public ProcessReport calculate(final long windowId, final String sensor,
+    public ReportEntity calculate(final long windowId, final String sensor,
                                    final List<DataProcess<HumidityData>> sensorHumidityData,
                                    final List<DataProcess<LightData>> sensorLightData,
                                    final List<DataProcess<TempData>> sensorTempData) {
+
+//        if (sensorHumidityData.isEmpty() && sensorLightData.isEmpty() && sensorTempData.isEmpty()) {
+//            return new ReportEntity();
+//        }
+
         final ProcessReport report = new ProcessReport();
         final ReportEntity entity = new ReportEntity();
 
@@ -87,8 +100,14 @@ public class Processor {
         entity.setMeanAgeOfInfo(mean);
         report.setMeanAgeOfInformation(mean);
 
-        reportRepository.save(entity);
+//        try {
+//            Thread.sleep(1);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
 
-        return report;
+//        reportRepository.save(entity);
+
+        return entity;
     }
 }

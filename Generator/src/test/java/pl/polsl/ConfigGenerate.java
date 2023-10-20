@@ -7,7 +7,6 @@ import pl.polsl.comon.config.ConfigGenerator;
 import pl.polsl.comon.config.ConfigSectors;
 import pl.polsl.comon.config.MqttConnection;
 import pl.polsl.comon.config.Sensor;
-import pl.polsl.comon.model.MessageType;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +17,10 @@ import java.util.UUID;
 
 @Log4j2
 public class ConfigGenerate {
-    public static void main(String[] args) throws IOException {
+    public static void main(final String[] args) throws IOException {
         log.info("START CREATING GENERATOR CONFIG.");
 
-        final ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);;
+        final ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
 
         final ConfigGenerator configGenerator = new ConfigGenerator();
@@ -37,28 +36,49 @@ public class ConfigGenerate {
         configGenerator.setMqtt(mqttConnection);
 
         final List<String> sectors = new ArrayList<>();
-        for (int i = 1; i <= 10000; i++ ) {
+        for (int i = 1; i <= 10000; i++) {
             sectors.add(UUID.randomUUID().toString());
         }
 
+        double totalInteval = 0, intervalCounts = 0;
+        double minOverallInterval = Double.MAX_VALUE;
+        double maxOverallInterval = Double.MIN_VALUE;
+
+
         configGenerator.setSensors(new ArrayList<>());
-        for(final String sector :sectors) {
+        for (final String sector : sectors) {
             final Sensor sensor = new Sensor();
 
             sensor.setSector(sector);
-            sensor.setLightInterval(new Random().nextDouble() * 10 + 5);
-            sensor.setHumidityInterval(new Random().nextDouble() * 10 + 5);
-            sensor.setTemperatureInterval(new Random().nextDouble() * 10 + 5);
+            final double lightInterval = new Random().nextDouble() * 10 + 5;
+            final double humidityInterval = new Random().nextDouble() * 10 + 5;
+            final double temperatureInterval = new Random().nextDouble() * 10 + 5;
+
+            minOverallInterval = Math.min(minOverallInterval, lightInterval);
+            minOverallInterval = Math.min(minOverallInterval, humidityInterval);
+            minOverallInterval = Math.min(minOverallInterval, temperatureInterval);
+
+            maxOverallInterval = Math.max(maxOverallInterval, lightInterval);
+            maxOverallInterval = Math.max(maxOverallInterval, humidityInterval);
+            maxOverallInterval = Math.max(maxOverallInterval, temperatureInterval);
+
+            sensor.setLightInterval(lightInterval);
+            sensor.setHumidityInterval(humidityInterval);
+            sensor.setTemperatureInterval(temperatureInterval);
+
+
+            totalInteval += sensor.getLightInterval() + sensor.getTemperatureInterval() + sensor.getHumidityInterval();
+            intervalCounts += 3;
 
             configGenerator.getSensors().add(sensor);
         }
 
 
-
+        final double meanInterval = totalInteval / intervalCounts;
 
         final File configFile = new File(String.format("Generator/src/test/resources/config-%d.json", sectors.size()));
 
-        if(configFile.exists()) {
+        if (configFile.exists()) {
             configFile.delete();
         }
 
@@ -71,10 +91,13 @@ public class ConfigGenerate {
         // save list of sectors
         final ConfigSectors configSectors = new ConfigSectors();
         configSectors.setSectors(sectors);
+        configSectors.setMeanInterval(meanInterval);
+        configSectors.setMaxInterval(maxOverallInterval);
+        configSectors.setMinInterval(minOverallInterval);
 
         final File sectorFile = new File(String.format("Generator/src/test/resources/sectors-%d.json", sectors.size()));
 
-        if(sectorFile.exists()) {
+        if (sectorFile.exists()) {
             sectorFile.delete();
         }
 

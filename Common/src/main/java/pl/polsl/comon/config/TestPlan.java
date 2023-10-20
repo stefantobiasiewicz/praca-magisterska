@@ -13,4 +13,6 @@ public class TestPlan {
     public String databaseContext;
     @JsonProperty("generator-config")
     public String generatorConfig;
+    @JsonProperty("outputDir")
+    public String outputDir;
 }
