@@ -1,0 +1,14 @@
+Średni czas przetwarzania okna
+Czas przetwarzania dla każdego rodzaju danych
+Średnia liczba danych w oknie
+Liczba błędów lub odrzuconych danych
+Czas trwania przetwarzania pojedynczeo rekordu
+
+ilość danych przetworzonych na sekundę
+opóźnienie w przetwarzaniu danych
+
+
+
+stream-system/16ed5d0b-37f7-49f5-baa6-3dc90b7bcd52/LIGHT
+stream-system/16ed5d0b-37f7-49f5-baa6-3dc90b7bcd52/TEMP
+stream-system/16ed5d0b-37f7-49f5-baa6-3dc90b7bcd52/HUMIDITY

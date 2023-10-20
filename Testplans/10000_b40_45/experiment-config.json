@@ -1,7 +1,8 @@
 {
   "window-size": 45,
   "experiment-duration": 300,
-  "database-context": "test-middle-2",
+  "database-context": "test-10000_b40_45",
   "generator-config": "config-10000.json",
-  "outputDir": "results"
+  "outputDir": "results",
+  "buffer": 40000
 }
