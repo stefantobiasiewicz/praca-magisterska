@@ -103,8 +103,12 @@ public abstract class WindowBase {
     protected abstract CalculationResults calculateAllWindow();
 
     @Async
-    @Scheduled(fixedRate = 45000)
+    @Scheduled(fixedRate = 80000)
     protected void calculate() {
+        if(windowId == 0) {
+            windowId++;
+            return;
+        }
         windowId++;
 
         final long windowProcessStartTime = System.currentTimeMillis();

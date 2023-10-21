@@ -1,0 +1,8 @@
+{
+  "window-size": 80,
+  "experiment-duration": 500,
+  "database-context": "solution_1_test-10000_b200_80",
+  "generator-config": "config-10000.json",
+  "outputDir": "results",
+  "buffer": 200000
+}

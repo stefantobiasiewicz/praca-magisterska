@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+//@Component
 public class Solution3 extends WindowBase {
-    private static final int TOTAL_BUFFER_SIZE = 50000;
+    private static final int TOTAL_BUFFER_SIZE = 40000;
     private final HashMap<String, Tuple> data = new HashMap<>();
     private int bufferSize = 0;
 

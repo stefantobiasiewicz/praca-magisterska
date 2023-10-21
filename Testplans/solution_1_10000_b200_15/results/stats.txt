@@ -1,0 +1,9 @@
+Czas testu: 300
+Nazwa: solution_1_test-10000_b200_15
+Liczba sektorów: 10000
+Długość okna: 15
+************ WYNIKI ************
+Średnia LightQoD: 0.9999684210526315
+Średnia HumidityQoD: 0.9999736842105263
+Średnia TemperatureQoD: 0.9999789473684214
+QoS: 9041.684210526315

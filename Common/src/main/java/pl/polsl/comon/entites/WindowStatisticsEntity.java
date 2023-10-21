@@ -2,17 +2,17 @@ package pl.polsl.comon.entites;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class WindowStatisticsEntity {
+@IdClass(WindowStatisticsEntity.class)
+public class WindowStatisticsEntity implements Serializable {
     @Id
     private Long id;
+    @Id
     private String context;
     private LocalDateTime catchTime;
 

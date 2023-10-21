@@ -1,0 +1,4 @@
+window id,buffer size,humidity_lost,light_lost,temp_lost,procces time
+2,40001,75269,74502,74845,7313
+3,40001,75247,74343,74643,6809
+4,40001,75292,74412,74796,6542

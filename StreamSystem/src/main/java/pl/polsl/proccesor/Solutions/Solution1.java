@@ -17,10 +17,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
+@Component
 public class Solution1 extends WindowBase {
 
-    private static final int BUFFER_SIZE = 40000;
+    private static final int TOTAL_BUFFER_SIZE = 200000;
+    private int bufferSize = 0;
     private final List<DataProcess<HumidityData>> humidityData = new ArrayList<>();
     private final List<DataProcess<LightData>> lightData = new ArrayList<>();
     private final List<DataProcess<TempData>> tempData = new ArrayList<>();
@@ -31,32 +32,35 @@ public class Solution1 extends WindowBase {
 
     @Override
     public void handleHumidityData(final DataProcess<HumidityData> data) {
-        if (humidityData.size() > BUFFER_SIZE) {
+        if (bufferSize > TOTAL_BUFFER_SIZE) {
             humidityDataLoss++;
             return;
         }
 
         humidityData.add(data);
+        bufferSize++;
     }
 
     @Override
     public void handleLightData(final DataProcess<LightData> data) {
-        if (lightData.size() > BUFFER_SIZE) {
+        if (bufferSize > TOTAL_BUFFER_SIZE) {
             lightDataLoss++;
             return;
         }
 
         lightData.add(data);
+        bufferSize++;
     }
 
     @Override
     public void handleTempData(final DataProcess<TempData> data) {
-        if (tempData.size() > BUFFER_SIZE) {
+        if (bufferSize > TOTAL_BUFFER_SIZE) {
             tempDataLoss++;
             return;
         }
 
         tempData.add(data);
+        bufferSize++;
     }
 
 
@@ -66,19 +70,18 @@ public class Solution1 extends WindowBase {
         final List<DataProcess<LightData>> lightData = new ArrayList<>(this.lightData);
         final List<DataProcess<TempData>> tempData = new ArrayList<>(this.tempData);
 
-        final List<String> sensors = super.sectors.stream().toList();
-
         final Long bufferSize = (long) (this.humidityData.size() + this.lightData.size() + this.tempData.size());
 
         this.humidityData.clear();
         this.lightData.clear();
         this.tempData.clear();
+        this.bufferSize = 0;
 
         final CalculationResults results = new CalculationResults();
         results.setEntities(new ArrayList<>());
         results.setBufferSize(bufferSize);
 
-        for (final String sector : sensors) {
+        for (final String sector : sectors) {
             final List<DataProcess<HumidityData>> sensorHumidityData = humidityData.stream()
                     .filter(dataProcess -> dataProcess.getData().getSector().equals(sector))
                     .toList();
