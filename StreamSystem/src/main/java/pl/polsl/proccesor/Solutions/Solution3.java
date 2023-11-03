@@ -85,13 +85,22 @@ public class Solution3 extends WindowBase {
         final List<String> sensors = super.sectors.stream().toList();
 
 
-        final Map<String, Tuple> data = (Map<String, Tuple>) this.data.clone();
+        final Map<String, Tuple> data = new HashMap<>();
 
         long bufferSize = 0;
         for (final Map.Entry<String, Tuple> tuple : this.data.entrySet()) {
             bufferSize += tuple.getValue().getHumidityData().size();
             bufferSize += tuple.getValue().getLightData().size();
             bufferSize += tuple.getValue().getTempData().size();
+
+
+            final Tuple newTuple = new Tuple(tuple.getValue().getHumidityData(), tuple.getValue().getLightData(), tuple.getValue().getTempData());
+            data.put(tuple.getKey(), newTuple);
+
+
+            tuple.getValue().getHumidityData().clear();
+            tuple.getValue().getLightData().clear();
+            tuple.getValue().getTempData().clear();
         }
 
         this.bufferSize = 0;

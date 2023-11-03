@@ -1,0 +1,9 @@
+Czas testu: 300
+Nazwa: solution_1_test-1000_b40_15
+Liczba sektorów: 1000
+Długość okna: 15
+************ WYNIKI ************
+Średnia LightQoD: 1.0
+Średnia HumidityQoD: 1.0
+Średnia TemperatureQoD: 1.0
+QoS: 405.4736842105263

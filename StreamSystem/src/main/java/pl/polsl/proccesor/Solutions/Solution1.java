@@ -17,10 +17,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 @Component
 public class Solution1 extends WindowBase {
 
-    private static final int TOTAL_BUFFER_SIZE = 200000;
+    private static final int TOTAL_BUFFER_SIZE = 40000;
     private int bufferSize = 0;
     private final List<DataProcess<HumidityData>> humidityData = new ArrayList<>();
     private final List<DataProcess<LightData>> lightData = new ArrayList<>();

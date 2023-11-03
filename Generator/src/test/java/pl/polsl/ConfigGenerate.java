@@ -36,7 +36,7 @@ public class ConfigGenerate {
         configGenerator.setMqtt(mqttConnection);
 
         final List<String> sectors = new ArrayList<>();
-        for (int i = 1; i <= 10000; i++) {
+        for (int i = 1; i <= 1000; i++) {
             sectors.add(UUID.randomUUID().toString());
         }
 
